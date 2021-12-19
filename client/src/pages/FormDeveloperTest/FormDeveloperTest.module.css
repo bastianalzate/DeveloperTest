@@ -1,0 +1,96 @@
+.containerFormDeveloper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerFormDeveloper .form{
+    width: 40%;
+    padding: 10px;
+    border-radius: 15px;
+
+}
+
+.containerFormDeveloper .form .divInfo{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0px 15px 0px;
+}
+
+.containerFormDeveloper .form div span{
+    width: 50%;
+    font-size: 16px;
+}
+
+/* Button and infoContact */
+.divHeader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0px 15px 0px;
+}
+
+.containerFormDeveloper .form div .infoContact{
+    font-weight: 600;
+}
+
+.containerFormDeveloper .form div .buttonClose{
+    border: none;
+    background-color: white;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+/* input */
+.containerFormDeveloper .form div input{
+    padding: 7px 10px 7px 10px;
+    width: 44%;
+}
+
+.containerFormDeveloper .form div select{
+    padding: 7px 10px 7px 10px;
+    width: 48%;
+}
+
+.containerFormDeveloper .form div select option{
+    background-color: gray;
+    font-size: 16px;
+}
+
+.containerFormDeveloper .form div input:disabled{
+    background-color: rgb(236, 236, 236);
+}
+
+/* div type check */
+.containerFormDeveloper .form .divTypeCheck{
+    width: 100%;
+    display: flex;
+    margin: 5px 0px 5px 0px;
+}
+
+.containerFormDeveloper .form .divTypeCheck div{
+    width: 48%;
+}
+
+.containerFormDeveloper .form .divTypeCheck .inputTypeCheck{
+    width: 20%;
+}
+
+/* button container */
+.containerFormDeveloper .form .buttonContainer{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+}
+
+.containerFormDeveloper .form .buttonContainer button{
+    background-color: rgb(39, 37, 58);
+    color: white;
+    padding: 7px 10px 7px 10px;
+    margin: 0px 0px 0px 5px;
+}
+
