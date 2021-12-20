@@ -1,0 +1,75 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+}
+
+.container .profile{
+    width: 50%;
+    height: 60%;
+    padding: 20px 0px 20px 0px;
+    border-radius: 50px;
+    background: #333333;
+    box-shadow:  20px 20px 40px #282828,
+                -20px -20px 40px #3e3e3e;
+}
+
+.photoContainer{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.photo{
+    height: 100%;
+    width: 100px;
+    border-radius: 55%;
+    background: #333333;
+    box-shadow: inset 20px 20px 40px #282828,
+                inset -20px -20px 40px #3e3e3e;
+}
+
+.container .infoContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0px 10px 0px;
+    color: rgb(182, 182, 182);
+}
+
+.container .infoContainer span{
+    font-size: 20px;
+}
+
+.containerButtonCloseSession{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+
+}
+
+.buttonCloseSession{
+    background-color: rgb(39, 37, 58);
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px 10px 15px;
+    margin: 0px 0px 0px 5px;
+    cursor: pointer;
+    width: 300px;
+    border: 1px solid rgb(39, 37, 58);
+}
+.buttonCloseSession:hover{
+    background-color: rgb(54, 50, 88);
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px 10px 15px;
+    margin: 0px 0px 0px 5px;
+    cursor: pointer;
+    width: 300px;
+    border: 1px solid rgb(54, 50, 88);
+}

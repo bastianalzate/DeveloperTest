@@ -1,0 +1,73 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .formLogin{
+    height: 50%;
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container .formLogin .containerButtonClose{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.container .formLogin .containerButtonClose .buttonClose{
+    border: none;
+    background-color: white;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+
+.container .formLogin .header{
+    font-weight: 600;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0px 0px 0px 0px;
+}
+
+.container .formLogin .info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px 10px 0px;
+}
+
+.container .formLogin .info label{
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.container .formLogin .info input{
+    padding: 7px 10px 7px 10px;
+    border-radius: 3px;
+}
+
+.container .formLogin .containerButtonLogin{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.container .formLogin .buttonLogin{
+    background-color: rgb(39, 37, 58);
+    color: white;
+    padding: 7px 10px 7px 10px;
+    margin: 0px 0px 0px 5px;
+    cursor: pointer;
+}

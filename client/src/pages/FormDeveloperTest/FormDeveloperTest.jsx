@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from "axios";
 import Swal from 'sweetalert2'
 import style from "./FormDeveloperTest.module.css";
+import { useNavigate } from 'react-router-dom';
+
 
 const FormDeveloperTest = () => {
     const [info, setInfo] = useState({
@@ -21,6 +23,8 @@ const FormDeveloperTest = () => {
         phone: "",
         email: "",
     })
+
+    const navigate = useNavigate();
 
     const validateError = (info) => {
         const error = {};
@@ -63,7 +67,7 @@ const FormDeveloperTest = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        if(!error.username && !error.email && !error.name && !error.position && info.username.length === 6 && info.email.length > 6 && info.name.length > 6 && info.position.length > 6){
+        if(!error.username && !error.email && !error.name && !error.position && info.username.length === 6 && info.email.length > 6 && info.name.length > 5 && info.position.length > 5){
             const password = passwordGenerator();
             axios.post("/user/create", {
                 ...info,
@@ -74,7 +78,7 @@ const FormDeveloperTest = () => {
                     icon: 'success',
                     title: 'Usuario creado con exito!',
                     text: 'Te invitamos a copiar y guardar el siguiente codigo el cual es tu nueva contraseña! '+password,
-                    footer: '<a href="">Quieres iniciar sessión?</a>'
+                    footer: '<a href="/login">Quieres iniciar sessión?</a>'
                 })
                 
             })
@@ -108,7 +112,7 @@ const FormDeveloperTest = () => {
             <div className={style.form}>
                 <div className={style.divHeader}>
                     <span className={style.infoContact}>Información de contacto</span>
-                    <button className={style.buttonClose}>X</button>
+                    <button className={style.buttonClose} onClick={() => navigate("/")}>X</button>
                 </div>
 
                 <div className={style.divInfo}>
@@ -204,7 +208,7 @@ const FormDeveloperTest = () => {
                 
                 <div className={style.buttonContainer}>
                     <button onClick={(event) => handleSubmit(event)}>Aceptar</button>
-                    <button >Cancelar</button>
+                    <button onClick={() => navigate("/")}>Cancelar</button>
                 </div>
 
             </div>
