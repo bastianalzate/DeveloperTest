@@ -65,7 +65,7 @@ const FormDeveloperTest = () => {
         event.preventDefault()
         if(!error.username && !error.email && !error.name && !error.position && info.username.length === 6 && info.email.length > 6 && info.name.length > 6 && info.position.length > 6){
             const password = passwordGenerator();
-            axios.post("http://localhost:3001/user/create", {
+            axios.post("/user/create", {
                 ...info,
                 password
             })
