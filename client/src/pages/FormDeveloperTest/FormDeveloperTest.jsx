@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import axios from "axios";
+import Swal from 'sweetalert2'
 import style from "./FormDeveloperTest.module.css";
 
 const FormDeveloperTest = () => {
     const [info, setInfo] = useState({
+        codeClient: "xmxwebdemo2",
         username: "XMX",
         name: "",
         position: "",
@@ -58,6 +61,32 @@ const FormDeveloperTest = () => {
         }))
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        if(!error.username && !error.email && !error.name && !error.position && info.username.length === 6 && info.email.length > 6 && info.name.length > 6 && info.position.length > 6){
+            const password = passwordGenerator();
+            axios.post("http://localhost:3001/user/create", {
+                ...info,
+                password
+            })
+            .then(response => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Usuario creado con exito!',
+                    text: 'Te invitamos a copiar y guardar el siguiente codigo el cual es tu nueva contraseña! '+password,
+                    footer: '<a href="">Quieres iniciar sessión?</a>'
+                })
+                
+            })
+            .catch(err => console.log(err))
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Debes rellenar todos los campos',
+                text: 'Te invitamos a completar todos los campos!',
+            })
+        }
+    }
 
     const passwordGenerator = () => {
         const chars = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
@@ -84,12 +113,12 @@ const FormDeveloperTest = () => {
 
                 <div className={style.divInfo}>
                     <span>Código de cliente:</span>
-                    <input type="text" value={"xmxwebdemo2"} disabled/>
+                    <input type="text" value={info.codeClient} disabled/>
                 </div>
 
                 <div className={style.divInfo}>
                     <span>Usuario:*</span>
-                    <input name="username" type="text" onChange={handleChange} value={info.username}/>
+                    <input className={error.username && style.errorBorder} name="username" type="text" onChange={handleChange} value={info.username}/>
                 </div>
                 {
                     error.username && (<div className={style.error}><span>{error.username}</span></div>)
@@ -97,7 +126,7 @@ const FormDeveloperTest = () => {
 
                 <div className={style.divInfo}>
                     <span>Nombre:*</span>
-                    <input name="name" type="text" placeholder='Nombre:*' onChange={handleChange} />
+                    <input className={error.name && style.errorBorder} name="name" type="text" placeholder='Nombre:*' onChange={handleChange} />
                 </div>
                 {
                     error.name && (<div className={style.error}><span>{error.name}</span></div>)
@@ -106,7 +135,7 @@ const FormDeveloperTest = () => {
 
                 <div className={style.divInfo}>
                     <span>Cargo:*</span>
-                    <input name="position" type="text" placeholder='Cargo:*' onChange={handleChange} />
+                    <input className={error.position && style.errorBorder} name="position" type="text" placeholder='Cargo:*' onChange={handleChange} />
                 </div>
                 {
                     error.position && (<div className={style.error}><span>{error.position}</span></div>)
@@ -114,7 +143,7 @@ const FormDeveloperTest = () => {
 
                 <div className={style.divInfo}>
                     <span>Teléfono:*</span>
-                    <input name="phone" type="text" placeholder='Teléfono:*' onChange={handleChange} value={info.phone}/>
+                    <input className={error.phone && style.errorBorder} name="phone" type="text" placeholder='Teléfono:*' onChange={handleChange} value={info.phone}/>
                 </div>
                 {
                     error.phone && (<div className={style.error}><span>{error.phone}</span></div>)
@@ -122,7 +151,7 @@ const FormDeveloperTest = () => {
 
                 <div className={style.divInfo}>
                     <span>Correo Electrónico:*</span>
-                    <input name="email" type="text" placeholder='Correo Electronico:*' onChange={handleChange} />
+                    <input className={error.email && style.errorBorder} name="email" type="text" placeholder='Correo Electronico:*' onChange={handleChange} />
                 </div>
                 {
                     error.email && (<div className={style.error}><span>{error.email}</span></div>)
@@ -174,7 +203,7 @@ const FormDeveloperTest = () => {
                 </div>
                 
                 <div className={style.buttonContainer}>
-                    <button onClick={() => passwordGenerator()}>Aceptar</button>
+                    <button onClick={(event) => handleSubmit(event)}>Aceptar</button>
                     <button >Cancelar</button>
                 </div>
 

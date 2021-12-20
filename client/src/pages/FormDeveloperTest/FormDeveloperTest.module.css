@@ -108,3 +108,9 @@
     font-size: 1rem;
     color: red;
 }
+
+.errorBorder{
+    border: 2px solid red;
+    outline: none;
+    border-radius: 5px;
+}
