@@ -1,6 +1,6 @@
 .containerFormDeveloper{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,9 +8,9 @@
 
 .containerFormDeveloper .form{
     width: 40%;
-    padding: 10px;
     border-radius: 15px;
-
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .containerFormDeveloper .form .divInfo{
@@ -92,5 +92,19 @@
     color: white;
     padding: 7px 10px 7px 10px;
     margin: 0px 0px 0px 5px;
+    cursor: pointer;
 }
 
+
+
+/* Errores */
+.error{
+    margin-top: -25px;
+    width: 50%;
+}
+.error span{
+    font-size: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: red;
+}

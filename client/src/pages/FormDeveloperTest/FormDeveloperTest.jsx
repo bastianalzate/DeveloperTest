@@ -3,19 +3,59 @@ import style from "./FormDeveloperTest.module.css";
 
 const FormDeveloperTest = () => {
     const [info, setInfo] = useState({
+        username: "XMX",
+        name: "",
+        position: "",
+        phone: "+57 ",
+        email: "",
+        cellphone: ""
+    })
+
+    const [error, setError] = useState({
         username: "",
         name: "",
         position: "",
         phone: "",
         email: "",
-        cellphone: ""
     })
+
+    const validateError = (info) => {
+        const error = {};
+
+        // Validacion de username
+        if(info.username.charAt(0) !== "X" || info.username.charAt(1) !== "M" || info.username.charAt(2) !== "X") error.username = "El usuario debe iniciar con XMX"
+        if(info.username.charAt(0) === "X" && info.username.charAt(1) === "M" && info.username.charAt(2) === "X" && info.username.length < 6 && info.username.length > 3) error.username = "La longitud debe ser de 6 caracteres"
+        if(info.username.charAt(0) === "X" && info.username.charAt(1) === "M" && info.username.charAt(2) === "X" && info.username.length > 6) error.username = "La longitud es mayor a 6 caracteres"
+
+        // Validacion de nombre
+        if(info.name.length > 1 && info.name.length < 5) error.name = "El nombre debe ser mayor a 5 caracteres y menor a 15 caracteres";
+        if(info.name.length > 15) error.name = "El nombre no puede superar 15 caracteres de longitud";
+        
+        // Validacion de cargo
+        if(info.position.length > 1 && info.position.length < 5) error.position = "La longitud debe ser mayor a 5 caracteres y menor a 10 caracteres";
+        if(info.position.length > 10) error.position = "No puedes superar el maximo de 10 caracteres";
+
+        // Validacion de telefono
+        if(info.phone.charAt(0) !== "+" || info.phone.charAt(1) !== "5" || info.phone.charAt(2) !== "7") error.phone = "Debe iniciar con +57 seguido de tu numero";
+        if(info.phone.length > 4 && info.phone.length < 11) error.phone = "El numero debe contener 7 digitos";
+        if(info.phone.length > 11) error.phone = "El numero tiene mas de 7 digitos";
+
+        // Validacion Email
+        if(!/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(info.email) && info.email.length > 1) error.email = "El email no es valido"
+
+        return error
+    }
 
     const handleChange = (event) => {
         setInfo({
             ...info,
             [event.target.name]: event.target.value
         })
+
+        setError(validateError({
+            ...info,
+            [event.target.name]: event.target.value
+        }))
     }
 
 
@@ -46,37 +86,53 @@ const FormDeveloperTest = () => {
                     <span>Código de cliente:</span>
                     <input type="text" value={"xmxwebdemo2"} disabled/>
                 </div>
-                
 
                 <div className={style.divInfo}>
                     <span>Usuario:*</span>
-                    <input name="username" type="text" onChange={handleChange}/>
+                    <input name="username" type="text" onChange={handleChange} value={info.username}/>
                 </div>
+                {
+                    error.username && (<div className={style.error}><span>{error.username}</span></div>)
+                }
 
                 <div className={style.divInfo}>
                     <span>Nombre:*</span>
-                    <input name="name" type="text" placeholder='Nombre:*' onChange={handleChange}/>
+                    <input name="name" type="text" placeholder='Nombre:*' onChange={handleChange} />
                 </div>
+                {
+                    error.name && (<div className={style.error}><span>{error.name}</span></div>)
+                }
+               
 
                 <div className={style.divInfo}>
                     <span>Cargo:*</span>
-                    <input name="position" type="text" placeholder='Cargo:*' onChange={handleChange}/>
+                    <input name="position" type="text" placeholder='Cargo:*' onChange={handleChange} />
                 </div>
+                {
+                    error.position && (<div className={style.error}><span>{error.position}</span></div>)
+                }
 
                 <div className={style.divInfo}>
                     <span>Teléfono:*</span>
-                    <input name="phone" type="text" placeholder='Teléfono:*' onChange={handleChange}/>
+                    <input name="phone" type="text" placeholder='Teléfono:*' onChange={handleChange} value={info.phone}/>
                 </div>
+                {
+                    error.phone && (<div className={style.error}><span>{error.phone}</span></div>)
+                }
 
                 <div className={style.divInfo}>
                     <span>Correo Electrónico:*</span>
-                    <input name="email" type="text" placeholder='Correo Electronico:*' onChange={handleChange}/>
+                    <input name="email" type="text" placeholder='Correo Electronico:*' onChange={handleChange} />
                 </div>
+                {
+                    error.email && (<div className={style.error}><span>{error.email}</span></div>)
+                }
 
                 <div className={style.divInfo}>
                     <span>Número celular:*</span>
-                    <input name="cellphone" type="cellphone" placeholder='Numero celular:*' onChange={handleChange}/>
+                    <input name="cellphone" type="cellphone" placeholder='Numero celular:*' onChange={handleChange} />
                 </div>
+                
 
                 <div className={style.divInfo}>
                     <span>Tipo de contacto:*</span>
@@ -119,7 +175,7 @@ const FormDeveloperTest = () => {
                 
                 <div className={style.buttonContainer}>
                     <button onClick={() => passwordGenerator()}>Aceptar</button>
-                    <button>Cancelar</button>
+                    <button >Cancelar</button>
                 </div>
 
             </div>
